@@ -1,0 +1,32 @@
+
+<div class="main-title">
+		<h3>栏目列表</h3>
+</div>
+
+<div class="cf">
+  <a href="{:U('Admin/Channel/add')}" class="btn btn-primary">增加顶级栏目</a>
+  <a href="{:U('Admin/Channel/sort')}" class="btn btn-primary">更新排序</a>
+</div>
+
+<div id="channel_tree" class="">
+  {$channel_tree}
+</div>
+</block>
+<block name="js">
+  <script>
+    $(function(){
+      $('.tree_ocl').click(function(){
+        var children_li_id = 'channel_fid_' + $(this).attr('rel');
+        var tree_li_obj = $(this).parent();
+        var closed = tree_li_obj.hasClass('li-closed');
+        if(closed){
+          tree_li_obj.removeClass('li-closed').addClass('li-open');
+          $("#" + children_li_id).show();
+        }else{
+          tree_li_obj.removeClass('li-open').addClass('li-closed');
+          $("#" + children_li_id).hide();
+        }
+      });
+    });
+  </script>
+</block><block name="test">

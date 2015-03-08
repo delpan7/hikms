@@ -1,0 +1,13 @@
+/*body { padding-top: 90px; }*/
+html, body {height: 100%;}
+#loading{display: none;}
+.navbar-wrapper{margin-top: 20px;}
+.container-content{margin-top: 50px;}
+#footer{background-color: #F5F5F5;height: 70px;}
+.navbar .navbar-inner{background: none repeat scroll 0 0 rgba(0, 0, 0, 0);border: medium none;padding: 0;}
+.article-left{width: 200px;}
+.article-right{width: 600px;}
+.login-box{width: 300px;height: 400px; margin: 10px auto;}
+.verifyimg {width: 100%;margin-top: 12px;}
+.html-hidden{display: none;}
+.html-show{display: block;}

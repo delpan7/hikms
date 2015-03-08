@@ -1,0 +1,46 @@
+<php>
+  $post_url = U('Admin/Model/add');
+  if(ACTION_NAME == 'edit'){
+    $post_url = U('Admin/Model/edit', array('id'=>I('get.id')));
+  }
+  
+</php>
+<form class="config-form" role="form" action="{$post_url}" method="POST">
+  <input type="hidden" name="id" value="{$model.id}">
+    <div class="form-group">
+      <label class="config-form-label" >模型标识（数据表名的一部分确认后不能再修改，必须由下划线和单词字符组成）</label>
+      <input type="text" name="name" class="form-control" value="{$model.name}" <eq name='ACTION_NAME' value='edit'>disabled</eq>>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >模型名称</label>
+      <input type="text" name="title" class="form-control" value="{$model.title}">
+    </div>
+  <eq name="ACTION_NAME" value="add">
+    <div class="form-group">
+      <label class="config-form-label" >模型类型</label>
+      <select name="type">
+        <option value="0" selected>文档模型</option>
+        <option value="1">独立模型</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >引擎类型（目前支持独立模型和文档模型）</label>
+      <select name="engine_type" >
+        <option value="MyISAM" selected>MyISAM</option>
+        <option value="InnoDB">InnoDB</option>
+        <option value="MEMORY">MEMORY</option>
+        <option value="BLACKHOLE">BLACKHOLE</option>
+        <option value="MRG_MYISAM">MRG_MYISAM</option>
+        <option value="ARCHIVE">ARCHIVE</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >是否需要主键（选“是”则会新建默认的id字段作为主键）</label>
+      <select name="need_pk">
+        <option value="1" selected>是</option>
+        <option value="0">否</option>
+      </select>
+    </div>
+  </eq>
+    <button type="submit" class="btn btn-primary">保存</button>
+  </form>

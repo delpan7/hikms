@@ -1,0 +1,17 @@
+<php>
+  $post_url = U('admin/Article/add');
+  if(ACTION_NAME == 'edit'){
+    $post_url = U('admin/Article/edit', array('id'=>I('get.id')));
+  }
+  
+</php>
+<form class="config-form" role="form" action="{$post_url}" method="POST">
+  <input type="hidden" name="id" value="{$id}">
+  <volist name='fields' id='vo'>
+    <div class="form-group">
+      <label class="config-form-label" >{$vo.title}</label>
+      {:Widget('Common/Field/'.$vo['type'], array('name' => $vo['name'], 'len' => $vo['len'], 'options' => $vo['options'], 'default' => (isset($info[$vo['name']]) ? : $vo['default_value']) ))}
+    </div>
+  </volist>
+    <button type="submit" class="btn btn-primary">保存</button>
+  </form>

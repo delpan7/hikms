@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <block name="title"><title>网站标题</title></block>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Bootstrap 学习">
+    <meta name="description" content="description">
+    <meta name="author" content="delpan">
+    <!-- 最新 Bootstrap 核心 CSS 文件 -->
+    <load href="__PUBLIC__/Common/Bootstrap/css/bootstrap.min.css" />
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <load href="__PUBLIC__/Common/Bootstrap/css/bootstrap-theme.min.css" />
+    <load href="__PUBLIC__/Admin/css/main.css" />
+    <block name="css"></block>
+  </head>
+  <body>
+    <a href="#content" class="sr-only">Skip to main content</a>
+    <block name="header" ><include file="Public:header" /></block>
+    <div class="clearfix"></div>
+    <div class="container-content" id="pjax-container">
+      <div class="affix left-menu-box">
+        <block name="left"><include file="Public:left" /></block>
+      </div>
+      <div class="container-right">
+        <div class="right-content" id="right_content">
+          <div id="loading">loading...</div>
+          <block name="content">{__CONTENT__}</block>
+        </div>
+        <block name="footer" ><include file="Public:footer" /></block>
+      </div>
+    </div>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <load href="__PUBLIC__/Common/js/jquery/jquery-2.1.0.min.js" />
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <load href="__PUBLIC__/Common/Bootstrap/js/bootstrap.min.js" />
+    <!-- jQuery UI -->
+    <load href="__PUBLIC__/Common/js/jquery/jquery-ui-1.10.4/ui/minified/jquery-ui.min.js" />
+    <!-- pjax -->
+    <load href="__PUBLIC__/Common/js/jquery/jquery.pjax.js" />
+    <!-- 公用js -->
+    <load href="__PUBLIC__/Common/js/common.js" />
+    <load href="__PUBLIC__/Admin/js/common.js" />
+    <block name="js"></block>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<php>
+  $post_url = U('Admin/Channel/add');
+  if(ACTION_NAME == 'edit'){
+    $post_url = U('Admin/Channel/edit', array('id'=>I('get.id')));
+  }
+  
+</php>
+<form class="config-form" role="form" action="{$post_url}" method="POST">
+  <input type="hidden" name="id" value="{$id}">
+  <input type="hidden" name="fid" value="{$Think.get.fid|intval}">
+    <div class="form-group">
+      <label class="config-form-label" >栏目名称</label>
+      <input type="text" name="name" class="form-control" value="{$name}" >
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >选择模型</label>
+      <select name="model_id" class="form-control">
+        <volist name="models" id="vo">
+          <option value="{$vo.id}"<eq name="i" value="$model_id">selected</eq>>{$vo.title}</option>
+        </volist>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >关键字</label>
+      <input type="text" name="keywords" class="form-control" value="{$keywords}">
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >栏目介绍</label>
+      <textarea name='description' class="form-control" cols="3">{$description}</textarea>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >栏目URL</label>
+      <input type="text" name="url" class="form-control" value="{$url}" />
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >页面内容</label>
+      {:Widget('Common/Field/editor', array('name'=>'content', 'default'=>$content))}
+    </div>
+    
+    <button type="submit" class="btn btn-primary">保存</button>
+  </form>

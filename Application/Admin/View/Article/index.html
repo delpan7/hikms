@@ -1,0 +1,60 @@
+<div class="main-title">
+		<h3>文章列表 [ 
+      <present name='group'>
+        <a href="{:U('Admin/Article/index')}">全部</a>&nbsp;
+      <else/>
+        <strong>全部</strong>&nbsp;
+      </present>
+      ]</h3>
+</div>
+
+<div class="cf">
+  <a href="{:U('Admin/Article/add', array('model_id'=>1))}" class="btn btn-primary">新 增</a>
+  <a href="{:U('Admin/Article/delete', array('model_id'=>1))}" class="btn btn-primary">删 除</a>
+
+  <!-- 高级搜索 -->
+  <div class="pull-right">
+    <div class="pull-right input-group">
+    <input type="text" placeholder="请输入配置名称" class="form-control" name="name">
+    <span class="input-group-btn"><a url="__SELF__" id="search" href="javascript:;" class="btn btn-primary">搜索</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th class="row-selected">
+          <input type="checkbox" class="checkbox check-all">
+        </th>
+        <th>ID</th>
+        <th>标题</th>
+        <th>作者</th>
+        <th>摘要</th>
+        <th>时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <volist name="data" id="vo">
+      <tr>
+        <td><input type="checkbox" value="{$vo.id}" name="id[]" class="ids row-selected"></td>
+        <td>{$vo.id}</td>
+        <td><a href="{:U('Admin/Article/edit', array('id'=>$vo['id']))}">{$vo.title}</a></td>
+        <td>{$vo.uid}</td>
+        <td>{$vo.summary}</td>
+        <td>{$vo.create_time|date='Y-m-d'}</td>
+        <td>
+          <a href="{:U('Admin/Article/edit', array('id'=>$vo['id']))}" title="编辑">编辑</a>
+          <a href="{:U('Admin/Article/delete', array('id'=>$vo['id']))}" title="删除" class="confirm ajax-get">删除</a>
+        </td>
+      </tr>
+    </volist>
+    </tbody>
+  </table>
+  <!-- 分页 -->
+  <div class="page">
+    <ul class="pagination">{$html}</ul>
+  </div>
+</div>

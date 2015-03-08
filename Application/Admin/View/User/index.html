@@ -1,0 +1,45 @@
+<div class="main-title">
+		<h3>用户列表</h3>
+</div>
+
+<div class="cf">
+  <a href="{:U('Admin/User/add')}" class="btn btn-primary">新 增</a>
+  <a href="{:U('Admin/User/delete')}" class="btn btn-primary">删 除</a>
+</div>
+<div class="">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th class="row-selected">
+          <input type="checkbox" class="checkbox check-all">
+        </th>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>邮箱</th>
+        <th>登陆时间</th>
+        <th>登陆IP</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <volist name="data" id="vo">
+      <tr>
+        <td><input type="checkbox" value="{$vo['id']}" name="id[]" class="ids row-selected"></td>
+        <td>{$vo['id']}</td>
+        <td><a href="{:U('Admin/User/edit', array('id'=>$vo['id']))}">{$vo['username']}</a></td>
+        <td>{$vo['email']}</td>
+        <td>{$vo['last_login_time'] ? date('Y-m-d', $vo['last_login_time']) : 0}</td>
+        <td>{$vo['last_login_ip']|long2ip}</td>
+        <td>
+          <a href="{:U('Admin/User/edit')}" title="编辑">编辑</a>
+          <a href="{:U('Admin/User/delete')}" title="删除" class="confirm ajax-get">删除</a>
+        </td>
+      </tr>
+    </volist>
+    </tbody>
+  </table>
+  <!-- 分页 -->
+  <div class="page">
+    <ul class="pagination">{$html}</ul>
+  </div>
+</div>

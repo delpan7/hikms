@@ -1,0 +1,19 @@
+/*body { padding-top: 90px; }*/
+html, body {height: 100%;}
+#loading{display: none;}
+.login{width: 300px;}
+.navbar-wrapper{margin-top: 20px;}
+#wrap {height: auto;margin: 0 auto -70px;min-height: 100%;padding: 0 0 70px;}
+.container-content{margin-top: 10px;}
+#footer{background-color: #F5F5F5;height: 70px;}
+.banner {background: none repeat scroll 0 0 rgba(0, 0, 0, 0);border: medium none;position: absolute;width: 100%;z-index: 100;}
+.pannello-affix {transition: all 0.1s ease-out 0s;width: 100%;}
+.affix-top{height: 79px;}
+.navbar .navbar-inner{margin-top:70px;background: none repeat scroll 0 0 rgba(0, 0, 0, 0);border: medium none;padding: 0;}
+.pannello-affix.affix .navbar-inner {margin-top: 0;}
+.article-left{width: 200px;}
+.article-right{width: 600px;}
+.login-box{width: 300px;height: 400px; margin: 10px auto;}
+.verifyimg {width: 100%;margin-top: 12px;}
+.html-hidden{display: none;}
+.html-show{display: block;}

@@ -1,0 +1,22 @@
+<volist name="menus" id="vo">
+  <ul class="nav nav-pills nav-stacked <eq name='vo.active' value='0'>html-hidden</eq>">
+    <volist name='vo.children' id='group_vo'>
+      <li <eq name='group_vo.active' value='1'>class="active"</eq>>
+      <eq name='group_vo.is_group' value='1'>
+      <h3><span class="glyphicon glyphicon-plus-sign"></span>{$group_vo.title}</h3>
+      <else/>
+      <a class="cate-one" href="{$group_vo.url}">{$group_vo.title}</a>
+      </eq>
+      <notempty name='group_vo.children'>
+        <ul class="nav nav-pills nav-stacked">
+          <volist name='group_vo.children' id='menu_vo'>
+            <li <eq name='menu_vo.active' value='1'>class="active"</eq>><a class="cate-two" href="{$menu_vo.url}">{$menu_vo.title}</a></li>
+          </volist>
+        </ul>
+      </notempty>
+        
+      </li>
+    </volist>
+    
+  </ul>
+</volist>

@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+  <volist name="config_group" id="vo">
+    <li <if condition="($key eq $group)">class="active"</if>><a href="{:U('admin/Config/setting', array('group'=>$key))}">{$vo}配置</a></li>
+  </volist>
+</ul>

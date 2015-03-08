@@ -1,0 +1,9 @@
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Common/js/editor/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Common/js/editor/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Common/js/editor/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+  window.UEDITOR_HOME_URL = "__PUBLIC__/Common/js/editor/ueditor/";
+  //实例化编辑器
+  var ue = UE.getEditor('{$name}');
+</script>
+<textarea id='{$name}' name='{$name}'>{$default}</textarea>

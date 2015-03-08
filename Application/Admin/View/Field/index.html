@@ -1,0 +1,39 @@
+<div class="main-title">
+		<h3>字段管理</h3>
+</div>
+
+<div class="cf">
+  <a href="{:U('Admin/Field/add', array('model_id'=>$model_id))}" class="btn btn-primary">新 增</a>
+  <a href="{:U('Admin/Field/delete')}" class="btn btn-primary">删 除</a>
+</div>
+<div class="">
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th class="row-selected">
+          <input type="checkbox" class="checkbox check-all">
+        </th>
+        <th>ID</th>
+        <th>字段</th>
+        <th>名称</th>
+        <th>数据类型</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <volist name="fields" id="vo">
+      <tr>
+        <td><input type="checkbox" value="{$vo['id']}" name="id[]" class="ids row-selected"></td>
+        <td>{$vo['id']}</td>
+        <td><a href="{:U('Admin/Field/edit', array('id'=>$vo['id']))}">{$vo['name']}</a></td>
+        <td>{$vo['title']}</td>
+        <td>{$vo['type']}</td>
+        <td>
+          <a href="{:U('Admin/Field/edit', array('model_id'=>$model_id, 'id'=>$vo['id']))}" title="编辑">编辑</a>
+          <a href="{:U('Admin/Field/delete', array('model_id'=>$model_id, 'id'=>$vo['id']))}" title="删除" class="confirm ajax-get">删除</a>
+        </td>
+      </tr>
+    </volist>
+    </tbody>
+  </table>
+</div>

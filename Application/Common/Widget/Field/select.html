@@ -1,0 +1,5 @@
+<select name='{$name}' class="form-control">
+  <volist name='options' id='vo'>
+    <option value="{$key}" <notpresent name="default"><eq name='i' value='1'>selected</eq><else /><eq name='default' value='$key'>selected</eq></notpresent> >{$vo}</option>
+  </volist>
+</select>

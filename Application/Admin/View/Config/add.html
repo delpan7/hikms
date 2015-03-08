@@ -1,0 +1,45 @@
+<php>
+  $post_url = U('admin/Config/add');
+  if(ACTION_NAME == 'edit'){
+    $post_url = U('admin/Config/edit', array('id'=>I('get.id')));
+  }
+  
+</php>
+<form class="config-form" role="form" action="{$post_url}" method="POST">
+  <input type="hidden" name="id" value="{$config.id}">
+    <div class="form-group">
+      <label class="config-form-label" >配置项标识（配置项在数据表中的唯一标识）</label>
+      <input type="text" name="name" class="form-control" value="{$config.name}" <eq name='ACTION_NAME' value='edit'>disabled</eq>>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >配置项名称</label>
+      <input type="text" name="title" class="form-control" value="{$config.title}">
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >配置项说明</label>
+      <input type="text" name="remark" class="form-control" value="{$config.remark}">
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >配置项分组</label>
+      <select name="group">
+        <option value="0" selected>未分组</option>
+        <volist name="config_group" id="vo">
+          <option value="{$key}" <eq name='key' value='$config.group'>selected</eq>>{$vo}</option>
+        </volist>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >配置项类型</label>
+      <select id="config_type" name="type" onchange="changeOptions(this)">
+        <volist name="config_type" id="vo">
+          <option value="{$key}" <eq name='key' value='$config.type'>selected</eq>>{$vo}</option>
+        </volist>
+      </select>
+    </div>
+    <div class="form-group html-hidden" id="config_options">
+      <label class="config-form-label" >配置项选项，对枚举和多选生效</label>
+      <textarea name="options" rows="3" class="form-control" >{$config.options}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">保存</button>
+  </form>
+</block><block name="js"><load href="__PUBLIC__/Admin/js/config.js" /></block><block name="test">

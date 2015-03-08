@@ -1,0 +1,38 @@
+<include file="tab" />
+<form class="config-form" role="form" action="{:U('admin/Config/save')}" method="POST">
+  <volist name='config_items' id='vo'>
+  <div class="form-group">
+    <label class="config-form-label" for="{$vo.name}">{$vo.title} {:($vo['remark'] ? '（'.$vo['remark'].'）' : '')}</label>
+    <switch name="vo.type" >
+      <case value="0">
+        <input type="number" name="{$vo.name}" class="form-control" value="{$vo.value}">
+      </case>
+
+      <case value="1">
+        <input type="text" name="{$vo.name}" class="form-control" value="{$vo.value}">
+      </case>
+
+      <case value="2|3">
+        <textarea name="{$vo.name}" rows="3" class="form-control" >{$vo.value}</textarea>
+      </case>
+
+      <case value="4">
+        <select name="{$vo.name}">
+          <volist name='vo.options' id='option'>
+            <option value="{$key}">{$option}</option>
+          </volist>
+        </select>
+      </case>
+
+      <case value="5">
+        <volist name='vo.options' id='option'>
+          <label><input type="checkbox" name="{$vo.name}" value="{$key}" <eq name='key' value='$vo.value'>checked</eq>>{$option}</label>
+        </volist>
+      </case>
+
+      <default /><input type="text" name="{$vo.name}" class="form-control" value="{$vo.value}">
+    </switch>
+  </div>
+  </volist>
+  <button type="submit" class="btn btn-primary">保存</button>
+</form>

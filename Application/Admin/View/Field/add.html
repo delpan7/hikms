@@ -1,0 +1,36 @@
+<php>
+  $post_url = U('Admin/Field/add');
+  if(ACTION_NAME == 'edit'){
+    $post_url = U('Admin/Field/edit', array('id'=>I('get.id')));
+  }
+  
+</php>
+<form class="config-form" role="form" action="{$post_url}" method="POST">
+  <input type="hidden" name="id" value="{$model.id}">
+  <input type="hidden" name="model_id" value="{$Think.get.model_id|intval}">
+    <div class="form-group">
+      <label class="config-form-label" >字段标识（数据表字段确认后不能再修改，必须由下划线和单词字符组成）</label>
+      <input type="text" name="name" class="form-control" value="{$model.name}" <eq name='ACTION_NAME' value='edit'>disabled</eq>>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >字段名称</label>
+      <input type="text" name="title" class="form-control" value="{$model.title}">
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >字段类型</label>
+      {:Widget('Common/Field/select', array('name'=>'type', 'options'=>$field_types, 'default'=>$model['type']))}
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >字段长度（生成表时字段的占用空间长度）</label>
+      <input type="number" name="len" class="form-control" value="{$model.len}" />
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >选择项（枚举、多选、单选时需要填写该项生效格式“值:名称”）</label>
+      <textarea name='options' class="form-control" cols="3">{$model.options}</textarea>
+    </div>
+    <div class="form-group">
+      <label class="config-form-label" >默认值</label>
+      <input name='default_value' class="form-control" value="{$model.default_value}" />
+    </div>
+    <button type="submit" class="btn btn-primary">保存</button>
+  </form>
